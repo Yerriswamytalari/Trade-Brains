@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import Home from "./Components/Home";
+import Watchlist from "./Components/Watchlist";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <header style={{height:"100px",backgroundColor:"black"}}>
+          <nav>
+            <ul style={{display:"flex",paddingTop:"30px"}}>
+              <li>
+                <Link style={{color:"white",fontSize:"25px",textDecoration:"none"}} to="/">Home</Link>
+              </li>
+              <li style={{marginLeft:"40px"}}>
+                <Link style={{color:"white",fontSize:"25px",textDecoration:"none"}} to="/watchlist">Watchlist</Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <main>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/watchlist" element={<Watchlist />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
